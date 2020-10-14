@@ -1,8 +1,8 @@
 # 第四章网络监听-实验
 ## 实验环境：
-attacker-kali: 08:00:27:50:3e:24/172.16.222.106/eth2
-victim-debian: 08:00:27:88:02:45/172.16.222.147/enp0s3
-gateway-debian:  08:00:27:2e:6a:ca/172.16.222.1/enp0s10
+- attacker-kali: 08:00:27:50:3e:24/172.16.222.106/eth2  
+- victim-debian: 08:00:27:88:02:45/172.16.222.147/enp0s3   
+- gateway-debian:  08:00:27:2e:6a:ca/172.16.222.1/enp0s10  
 
 ## 实验一：检测局域网中的异常终端
 ### 实验过程
@@ -41,17 +41,17 @@ ip link set enp0s3 promisc off
 ```
 ip a
 ```
-# attacker-kali scapy构造一个 ARP 请求
+-  attacker-kali scapy构造一个 ARP 请求
 ```
 arpbroadcast = Ether(dst="08:00:27:2e:6a:ca")/ARP(op=1, pdst="172.16.222.1")
 ```
 
-# 查看构造好的 ARP 请求报文详情
+-  查看构造好的 ARP 请求报文详情
 ```
 arpbroadcast.show()
 ```
 
-# 发送这个 ARP 广播请求
+-  发送这个 ARP 广播请求
 ```
 recved = srp(arpbroadcast, timeout=2)
 ```
